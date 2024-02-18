@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "vconcat": [{"data": {"name": "data-3513af4900253a1a65ff3152f7f08d97"}, "mark": {"type": "bar"}, "encoding": {"color": {"condition": {"test": "(datum.dom_gross_mean > 0)", "field": "dom_gross_mean", "scale": {"scheme": "blues"}, "title": "Mean of dom_gross", "type": "quantitative"}, "value": "white"}, "tooltip": [{"field": "dom_gross_mean", "type": "quantitative"}], "x": {"field": "dom_gross_mean", "title": "Mean of dom_gross", "type": "quantitative"}, "y": {"field": "test_result", "sort": ["Fewer than two women", "Passes Bechdel Test", "Women don't talk to each other", "Women only talk about men", "dubious"], "type": "ordinal"}}, "transform": [{"filter": {"field": "test_result", "oneOf": ["Fewer than two women", "Passes Bechdel Test", "Women don't talk to each other", "Women only talk about men", "dubious"]}}]}, {"data": {"name": "data-e13ce9609bba95cb68f87ef72bd7ce50"}, "mark": {"type": "bar"}, "encoding": {"color": {"condition": {"test": "(datum.int_gross_mean > 0)", "field": "int_gross_mean", "scale": {"scheme": "reds"}, "title": "Mean of int_gross", "type": "quantitative"}, "value": "white"}, "tooltip": [{"field": "int_gross_mean", "type": "quantitative"}], "x": {"field": "int_gross_mean", "title": "Mean of int_gross", "type": "quantitative"}, "y": {"field": "test_result", "sort": ["Fewer than two women", "Passes Bechdel Test", "Women don't talk to each other", "Women only talk about men", "dubious"], "type": "ordinal"}}, "transform": [{"filter": {"field": "test_result", "oneOf": ["Fewer than two women", "Passes Bechdel Test", "Women don't talk to each other", "Women only talk about men", "dubious"]}}]}], "resolve": {"scale": {"color": "independent", "x": "shared"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-3513af4900253a1a65ff3152f7f08d97": [{"test_result": "Fewer than two women", "dom_gross_mean": 83988120.14130434}, {"test_result": "Passes Bechdel Test", "dom_gross_mean": 85547719.73448277}, {"test_result": "Women don't talk to each other", "dom_gross_mean": 107937632.42699724}, {"test_result": "Women only talk about men", "dom_gross_mean": 92503352.28571428}, {"test_result": "dubious", "dom_gross_mean": 93093173.87128712}], "data-e13ce9609bba95cb68f87ef72bd7ce50": [{"test_result": "Fewer than two women", "int_gross_mean": 103263397.37037037}, {"test_result": "Passes Bechdel Test", "int_gross_mean": 119666526.75595239}, {"test_result": "Women don't talk to each other", "int_gross_mean": 134478494.3529412}, {"test_result": "Women only talk about men", "int_gross_mean": 192241463.14285713}, {"test_result": "dubious", "int_gross_mean": 179338460.54545453}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
